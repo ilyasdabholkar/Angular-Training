@@ -1,0 +1,212 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Register Form</title>
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+      integrity="sha384-GLhlTQ8iRABdZLl6O3oVMWSktQOp6b7In1Zl3/Jr59b6EGGoI1aFkw7cmDA6j6gD"
+      crossorigin="anonymous"
+    />
+    <style>
+      .required{
+        color : red;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="container text-center" style="width: 80%">
+      <div class="row">
+        <div class="col-3"></div>
+        <div class="col-5"><h4 class="mt-2">Registration Form</h4></div>
+        <div class="col-4"></div>
+      </div>
+      <form class="text-center" onsubmit="handleSubmit(event)">
+        <div class="row g-3 align-items-center mt-2">
+          <div class="col-3">
+            <label for="name" class="col-form-label">Name<sup class="required">*</sup></label>
+          </div>
+          <div class="col-5">
+            <input
+              type="text"
+              placeholder="enter name"
+              id="name"
+              class="form-control"
+              onblur="validateName()"
+            />
+          </div>
+          <div class="col-4">
+            <span class="form-text text-danger" id="name-error"></span>
+          </div>
+        </div>
+
+        <div class="row g-3 align-items-center mt-2">
+          <div class="col-3">
+            <label for="email" class="col-form-label">Email<sup class="required">*</sup></label>
+          </div>
+          <div class="col-5">
+            <input
+              type="email"
+              placeholder="enter email address"
+              id="email"
+              onblur="validateEmail()"
+              class="form-control"
+            />
+          </div>
+          <div class="col-4">
+            <span class="form-text text-danger" id="email-error"></span>
+          </div>
+        </div>
+
+        <div class="row g-3 align-items-center mt-2">
+          <div class="col-3">
+            <label for="password" class="col-form-label">Password<sup class="required">*</sup></label>
+          </div>
+          <div class="col-5">
+            <input type="password" placeholder="enter password" onblur="validatePassword()" id="password" class="form-control" />
+          </div>
+          <div class="col-4">
+            <span class="form-text text-danger" id="password-error"></span>
+          </div>
+        </div>
+
+        <div class="row g-3 align-items-center mt-2">
+          <div class="col-3">
+            <label for="confirm-password" class="col-form-label">Confirm Password<sup class="required">*</sup></label>
+          </div>
+          <div class="col-5">
+            <input type="password" placeholder="re-enter password" id="confirm-password" onblur="validateConfirmPassword()" class="form-control" />
+          </div>
+          <div class="col-4">
+            <span class="form-text text-danger" id="confirm-password-error"></span>
+          </div>
+        </div>
+
+        <div class="row g-3 align-items-center mt-2">
+          <div class="col-3">
+            <label class="col-form-label">Gender<sup class="required">*</sup></label>
+          </div>
+          <div class="col-5">
+            <div class="row">
+              <div class="col-6">
+                <input
+                  class="form-check-input"
+                  type="radio"
+                  name="gender"
+                  id="gender1"
+                  onblur="validateGender()"
+                />
+                <label class="form-check-label" for="gender1"> Male </label>
+              </div>
+              <div class="col-6">
+                <input
+                  class="form-check-input"
+                  type="radio"
+                  name="gender"
+                  id="gender2"
+                  onblur="validateGender()"
+                />
+                <label class="form-check-label" for="gender2"> Female </label>
+              </div>
+            </div>
+          </div>
+          <div class="col-4">
+            <span class="form-text text-danger" id="gender-error"></span>
+          </div>
+        </div>
+
+        <div class="row g-3 align-items-center mt-2">
+          <div class="col-3">
+            <label class="col-form-label">Hobbies<sup class="required">*</sup></label>
+          </div>
+          <div class="col-5">
+            <div class="row">
+              <div class="col-4">
+                <input
+                  class="form-check-input chkHobby"
+                  type="checkbox"
+                  value="cricket"
+                  id="cricket"
+                  onblur="validateHobby()"
+                />
+                <label class="form-check-label" for="cricket"> Cricket </label>
+              </div>
+              <div class="col-4">
+                <input
+                  class="form-check-input chkHobby"
+                  type="checkbox"
+                  value="table tennis"
+                  id="table-tennis"
+                  onblur="validateHobby()"
+                />
+                <label class="form-check-label" for="table tennis">
+                  Table Tennis
+                </label>
+              </div>
+              <div class="col-4">
+                <input
+                  class="form-check-input chkHobby"
+                  type="checkbox"
+                  value="football"
+                  id="football"
+                  onblur="validateHobby()"
+                />
+                <label class="form-check-label" for="football">
+                  Football
+                </label>
+              </div>
+            </div>
+          </div>
+          <div class="col-4">
+            <span class="form-text text-danger" id="hobby-error"> </span>
+          </div>
+        </div>
+
+        <div class="row g-3 align-items-center mt-2">
+          <div class="col-3">
+            <label for="remarks" class="col-form-label">Remarks<sup class="required">*</sup></label>
+          </div>
+          <div class="col-5">
+            <textarea
+              class="form-control"
+              placeholder="Leave your remarks here"
+              id="remarks"
+              onblur="validateRemark()"
+            ></textarea>
+          </div>
+          <div class="col-4">
+            <span class="form-text text-danger" id="remarks-error"> </span>
+          </div>
+        </div>
+
+        <div class="row g-3 align-items-center mt-2">
+          <div class="col-3">
+            <label for="city" class="col-form-label">City<sup class="required">*</sup></label>
+          </div>
+          <div class="col-5">
+            <select id="city" class="form-select" onblur="validateCity()">
+                <option value="">Select City</option>
+                <option value="Mumbai">Mumbai</option>
+                <option value="Satara">Satara</option>
+              </select>
+          </div>
+          <div class="col-4">
+            <span class="form-text text-danger" id="city-error"></span>
+          </div>
+        </div>
+
+        <input type="submit" value="submit" class="btn btn-primary mt-4" />
+        <input type="reset" value="clear" class="btn btn-secondary mt-4 reset" />
+      </form>
+    </div>
+    <script src="./assignment1.js"></script>
+    <script
+      src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"
+      integrity="sha384-w76AqPfDkMBDXo30jS1Sgez6pr3x5MlQ1ZAGC+nuZB+EYdgRZgiwxhTBTkF7CXvN"
+      crossorigin="anonymous"
+    ></script>
+  </body>
+</html>
